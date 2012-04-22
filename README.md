@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 A running Cluebot-NG install has two main components - the core and the interface to Wikipedia.
 
 Core
@@ -19,3 +20,9 @@ Interface to Wikipedia
 ======================
 
 The interface to Wikipedia is written in PHP and requires a PHP interpreter.
+=======
+cluebotng
+=========
+
+cluebotng source code
+>>>>>>> 999c12a5267036a398a88df08e2439c9abeb418c
