@@ -314,6 +314,7 @@ int main(int argc, char **argv) {
 	try {
 		config.readFile((configdir + "/cluebotng.conf").c_str());
 	} catch (const ParseException & e) {
+		cerr << (configdir + "/cluebotng.conf") << endl;
 		cerr << "Error parsing configuration file \n";
 		return 1;
 	}
