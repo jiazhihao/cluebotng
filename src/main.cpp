@@ -286,7 +286,7 @@ int main(int argc, char **argv) {
 	bool editsfromnet = false;
 	int netport;
 	string chainname = "default";
-	string configdir = "./conf";
+	string configdir = "";
 	
 	if(argc < 2) printUsage(argv[0]);
 	int opt;
@@ -312,9 +312,9 @@ int main(int argc, char **argv) {
 	
 	Config config;
 	try {
-		config.readFile((configdir + "/cluebotng.conf").c_str());
+		config.readFile((configdir + "cluebotng.conf").c_str());
 	} catch (const ParseException & e) {
-		cerr << (configdir + "/cluebotng.conf") << endl;
+		cerr << (configdir + "cluebotng.conf") << endl;
 		cerr << "Error parsing configuration file \n";
 		return 1;
 	}
