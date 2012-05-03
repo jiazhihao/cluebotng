@@ -322,6 +322,28 @@ class CharacterCounter : public TextProcessor {
 		}
 };
 
+class UserCapital : public TextProcessor {
+	public:
+		UserCapital(libconfig::Setting & cfg) : TextProcessor(cfg) {}
+		
+		void processText(Edit & ed, const std::string & text, const std::string & proppfx) {
+			int counts[256];
+			memset(counts, 0, sizeof(counts));
+			const char * str = text.c_str();
+			for(; *str; ++str) counts[*str]++;
+			libconfig::Setting & metrics = configuration["metrics"];
+			for(int i = 0; i < metrics.getLength(); ++i) {
+				const char * metricname = metrics[i].getName();
+				const char * metricchars = metrics[i];
+				int cnt = 0;
+				for(; *metricchars; ++metricchars) cnt += counts[*metricchars];
+				int noCapital = 1;
+				if(cnt>0) noCapital = 0; 
+				ed.setProp<int>(proppfx + metricname, noCapital);
+			}
+		}
+};
+
 class MiscTextMetrics : public TextProcessor {
 	public:
 		MiscTextMetrics(libconfig::Setting & cfg) : TextProcessor(cfg) {}

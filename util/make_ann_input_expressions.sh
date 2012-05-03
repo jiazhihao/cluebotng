@@ -232,3 +232,5 @@ echo >> $LISTFILE
 
 ) >ann_input_expressions.conf
 
+echo 'finish generation'
+
