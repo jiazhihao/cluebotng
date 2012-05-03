@@ -53,6 +53,9 @@ void addChainLink(EditProcessChain & procchain, const string & modulename, Setti
 	} else if(modulename == "username_has_capital") {
 	  printf("Add UserCapital to procchain.\n");
 		procchain.appendProcessor(boost::shared_ptr<EditProcessor>(new UserCapital(moduleconfig)));
+	} else if(modulename == "username_ends_with_number") {
+    printf("Add UserNameEndsWithNumber to procchain.\n");
+    procchain.appendProcessor(boost::shared_ptr<EditProcessor>(new UserNameEndsWithNumber(moduleconfig)));	
 	} else if(modulename == "edit_dump") {
 		procchain.appendProcessor(boost::shared_ptr<EditProcessor>(new EditDump(moduleconfig)));
 	} else if(modulename == "print_progress") {
