@@ -358,6 +358,60 @@ class UserNameEndsWithNumber : public TextProcessor {
 		}
 };
 
+class FileBasedFeature : public TextProcessor {
+  public:
+    bool doneLoading;
+    std::map<std::string, double> dict;
+    std::string featureName;
+    FileBasedFeature(libconfig::Setting & cfg) : TextProcessor(cfg) {
+      doneLoading = false;
+      featureName = "";
+    }
+    
+    double getDoubleFeature(const std::string &editid) {
+      std::string pathName = "../wikivandalism/" + featureName + ".dat";
+      if (!doneLoading) {
+        doneLoading = true;
+        std::filebuf fb;
+        fb.open(pathName.c_str(), std::ios::in);
+        std::istream fin(&fb);
+        int key;
+        double value;
+        std::string line;
+        while(fin>>line) {
+          int indexOfComma = line.find(',');
+          std::string key = line.substr(0, indexOfComma);
+          std::string value = line.substr(indexOfComma+1, line.size() - indexOfComma - 1);
+          double valueAsDouble = atof(value.c_str());
+          dict[key] = valueAsDouble;
+        }
+      }
+      return dict[editid];
+    }
+    
+    int getIntFeature(const std::string &editid) {
+       double featureVal = getDoubleFeature(editid);
+       return int(featureVal + 0.5);
+    }
+    
+    bool getBoolFeature(const std::string &editid) {
+       int featureVal = getIntFeature(editid);
+       if (featureVal == 1) return true;
+       return false;
+    }
+};
+
+class UserIsIPAddress : public FileBasedFeature {
+  public:
+		UserIsIPAddress(libconfig::Setting & cfg) : FileBasedFeature(cfg) {
+		  featureName = "user_is_ip_address";
+		}
+		
+		void processText(Edit & ed, const std::string & editid, const std::string & proppfx) {
+		  ed.setProp<bool>(featureName, getBoolFeature(featureName));
+		}
+};
+
 class MiscTextMetrics : public TextProcessor {
 	public:
 		MiscTextMetrics(libconfig::Setting & cfg) : TextProcessor(cfg) {}
