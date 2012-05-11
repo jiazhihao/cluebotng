@@ -53,6 +53,9 @@ void addChainLink(EditProcessChain & procchain, const string & modulename, Setti
 	} else if(modulename == "username_has_capital") {
 	  printf("Add UserCapital to procchain.\n");
 		procchain.appendProcessor(boost::shared_ptr<EditProcessor>(new UserCapital(moduleconfig)));
+	} else if(modulename == "username_ends_with_number") {
+    printf("Add UserNameEndsWithNumber to procchain.\n");
+    procchain.appendProcessor(boost::shared_ptr<EditProcessor>(new UserNameEndsWithNumber(moduleconfig)));	
 	} else if(modulename == "edit_dump") {
 		procchain.appendProcessor(boost::shared_ptr<EditProcessor>(new EditDump(moduleconfig)));
 	} else if(modulename == "print_progress") {
@@ -318,7 +321,7 @@ int main(int argc, char **argv) {
 	try {
 		config.readFile((configdir + "/cluebotng.conf").c_str());
 	} catch (const ParseException & e) {
-		cerr << "Error parsing configuration file " << e.getFile() << " on line " << e.getLine() << ": " << e.getError() << "\n";
+		cerr << "Error parsing configuration file \n";
 		return 1;
 	}
 	Setting & rootconfig = config.getRoot();

@@ -344,6 +344,20 @@ class UserCapital : public TextProcessor {
 		}
 };
 
+class UserNameEndsWithNumber : public TextProcessor {
+  public:
+		UserNameEndsWithNumber(libconfig::Setting & cfg) : TextProcessor(cfg) {}
+		
+		void processText(Edit & ed, const std::string & text, const std::string & proppfx) {
+		  int usernameLength = text.length();
+		  int doesntEndsWithNumber = 1;
+		  if (usernameLength > 0 && (text[usernameLength - 1] >= '0' && text[usernameLength - 1] <= '9')) {
+		    doesntEndsWithNumber = 0;
+		  }
+		  ed.setProp<int>("UserNameEndsWithNumber", doesntEndsWithNumber);
+		}
+};
+
 class MiscTextMetrics : public TextProcessor {
 	public:
 		MiscTextMetrics(libconfig::Setting & cfg) : TextProcessor(cfg) {}

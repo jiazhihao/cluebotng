@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WPEditSet>
+ <!--  <EditDB>
+   <query>SELECT `edittype`,
+				`editid`,
+				`comment`,
+				`user`,
+				`user_edit_count`,
+				`user_distinct_pages`,
+				`user_warns`,
+				`prev_user`,
+				UNIX_TIMESTAMP( `user_reg_time` ) AS `user_reg_time_unix`,
+				UNIX_TIMESTAMP( `common_page_made_time` ) AS `common_page_made_time_unix`,
+				`common_title`,
+				`common_namespace`,
+				`common_creator`,
+				`common_num_recent_edits`,
+				`common_num_recent_reversions`,
+				`current_minor`,
+				UNIX_TIMESTAMP( `current_timestamp` ) AS `current_timestamp_unix`,
+				`current_text`,
+				UNIX_TIMESTAMP( `previous_timestamp` ) AS `previous_timestamp_unix`,
+				`previous_text`,
+				`isvandalism`,
+				`isactive`,
+				`source`,
+				UNIX_TIMESTAMP( `updated` ) AS `updated_unix`,
+				`reviewers`,
+				`reviewers_agreeing` FROM `editset` WHERE source = 'Random Edits' AND `isactive` = 1</query>
+   <time>1289811416</time>
+   <uname>
+    <sysname>Linux</sysname>
+    <nodename>i7</nodename>
+    <release>2.6.36</release>
+    <version>#1 SMP Fri Nov 12 23:08:28 CST 2010</version>
+    <machine>x86_64</machine>
+    <domainname>(none)</domainname>
+   </uname>
+   <username>cluebotng</username>
+  </EditDB>
+-->
