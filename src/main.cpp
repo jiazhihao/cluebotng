@@ -321,7 +321,7 @@ int main(int argc, char **argv) {
 	try {
 		config.readFile((configdir + "/cluebotng.conf").c_str());
 	} catch (const ParseException & e) {
-		cerr << "Error parsing configuration file " << e.getFile() << " on line " << e.getLine() << ": " << e.getError() << "\n";
+		cerr << "Error parsing configuration file \n";
 		return 1;
 	}
 	Setting & rootconfig = config.getRoot();
