@@ -354,7 +354,7 @@ class UserNameEndsWithNumber : public TextProcessor {
 		  if (usernameLength > 0 && (text[usernameLength - 1] >= '0' && text[usernameLength - 1] <= '9')) {
 		    doesntEndsWithNumber = 0;
 		  }
-		  ed.setProp<int>("UserNameEndsWithNumber", doesntEndsWithNumber);
+		  ed.setProp<int>("ann_user_ends_with_number", doesntEndsWithNumber);
 		}
 };
 
