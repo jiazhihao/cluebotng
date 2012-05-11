@@ -360,19 +360,19 @@ class UserNameEndsWithNumber : public TextProcessor {
 
 class FileBasedFeature : public TextProcessor {
   public:
-    bool doneLoading;
     std::map<std::string, double> dict;
-    std::string featureName;
-    FileBasedFeature(libconfig::Setting & cfg) : TextProcessor(cfg) {
-      doneLoading = false;
-      featureName = "";
-    }
+    std::map<std::string, int> doneLoading;
+    FileBasedFeature(libconfig::Setting & cfg) : TextProcessor(cfg) {}
     
-    double getDoubleFeature(const std::string &editid) {
+    double getDoubleFeature(const std::string &editid, const std::string &featureName) {
       std::string pathName = "../wikivandalism/" + featureName + ".dat";
-      if (!doneLoading) {
-        doneLoading = true;
+      if (doneLoading.count(featureName) == 0) {
+        doneLoading[featureName] = 1;
         std::ifstream fin(pathName.c_str());
+        if (!fin) {
+          std::cout << "Couldn't open: " + pathName << std::endl;
+          throw 0;
+        }
         std::string line;
         while(fin>>line) {
           int indexOfComma = line.find(',');
@@ -385,13 +385,13 @@ class FileBasedFeature : public TextProcessor {
       return dict[editid];
     }
     
-    int getIntFeature(const std::string &editid) {
-       double featureVal = getDoubleFeature(editid);
+    int getIntFeature(const std::string &editid, const std::string &featureName) {
+       double featureVal = getDoubleFeature(editid, featureName);
        return int(featureVal + 0.5);
     }
     
-    bool getBoolFeature(const std::string &editid) {
-       int featureVal = getIntFeature(editid);
+    bool getBoolFeature(const std::string &editid, const std::string &featureName) {
+       int featureVal = getIntFeature(editid, featureName);
        if (featureVal == 1) return true;
        return false;
     }
@@ -415,15 +415,15 @@ class UserIsIPAddress : public FileBasedFeature {
 		void processText(Edit & ed, const std::string & editid, const std::string & proppfx) {
 		  for (int i = 0; i < boolFeatures.size(); ++i) {
 		    std::string featureName = boolFeatures[i];
-		    ed.setProp<bool>(featureName, getBoolFeature(featureName));
+		    ed.setProp<bool>(featureName, getBoolFeature(editid, featureName));
 		  }
 		  for (int i = 0; i < intFeatures.size(); ++i) {
 		    std::string featureName = intFeatures[i];
-		    ed.setProp<int>(featureName, getIntFeature(featureName));
+		    ed.setProp<int>(featureName, getIntFeature(editid, featureName));
 		  }
 		  for (int i = 0; i < doubleFeatures.size(); ++i) {
 		    std::string featureName = doubleFeatures[i];
-		    ed.setProp<double>(featureName, getDoubleFeature(featureName));
+		    ed.setProp<double>(featureName, getDoubleFeature(editid, featureName));
 		  }
 		}
 };
