@@ -339,13 +339,11 @@ class UserCapital : public TextProcessor {
 				for(; *metricchars; ++metricchars) cnt += counts[*metricchars];
 				int noCapital = 1;
 				if(cnt>0) noCapital = 0;
-				//noCapital = 1 - noCapital;
 				ed.setProp<int>("user_count_capitals", noCapital);
 			}
 		}
 };
 
-/*
 class UserNameEndsWithNumber : public TextProcessor {
   public:
 		UserNameEndsWithNumber(libconfig::Setting & cfg) : TextProcessor(cfg) {}
@@ -356,10 +354,9 @@ class UserNameEndsWithNumber : public TextProcessor {
 		  if (usernameLength > 0 && (text[usernameLength - 1] >= '0' && text[usernameLength - 1] <= '9')) {
 		    doesntEndsWithNumber = 0;
 		  }
-		  ed.setProp<int>("ann_user_ends_with_number", doesntEndsWithNumber);
+		  ed.setProp<int>("user_ends_with_number", doesntEndsWithNumber);
 		}
 };
-*/
 
 class MiscTextMetrics : public TextProcessor {
 	public:
