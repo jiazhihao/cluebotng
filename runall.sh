@@ -6,3 +6,6 @@ cd conf
 cd ..
 #./util/train_bayes.sh
 make anntrainandtrial
+cd trialreport
+./makegraphs.sh
+cd ..

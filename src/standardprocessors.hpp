@@ -322,7 +322,6 @@ class CharacterCounter : public TextProcessor {
 		}
 };
 
-/*
 class UserCapital : public TextProcessor {
 	public:
 		UserCapital(libconfig::Setting & cfg) : TextProcessor(cfg) {}
@@ -339,12 +338,14 @@ class UserCapital : public TextProcessor {
 				int cnt = 0;
 				for(; *metricchars; ++metricchars) cnt += counts[*metricchars];
 				int noCapital = 1;
-				if(cnt>0) noCapital = 0; 
-				ed.setProp<int>("ann_user_count_capitals", noCapital);
+				if(cnt>0) noCapital = 0;
+				//noCapital = 1 - noCapital;
+				ed.setProp<int>("user_count_capitals", noCapital);
 			}
 		}
 };
 
+/*
 class UserNameEndsWithNumber : public TextProcessor {
   public:
 		UserNameEndsWithNumber(libconfig::Setting & cfg) : TextProcessor(cfg) {}
