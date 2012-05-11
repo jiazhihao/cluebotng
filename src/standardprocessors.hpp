@@ -322,6 +322,7 @@ class CharacterCounter : public TextProcessor {
 		}
 };
 
+/*
 class UserCapital : public TextProcessor {
 	public:
 		UserCapital(libconfig::Setting & cfg) : TextProcessor(cfg) {}
@@ -357,6 +358,7 @@ class UserNameEndsWithNumber : public TextProcessor {
 		  ed.setProp<int>("ann_user_ends_with_number", doesntEndsWithNumber);
 		}
 };
+*/
 
 class MiscTextMetrics : public TextProcessor {
 	public:
