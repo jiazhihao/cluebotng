@@ -15,6 +15,10 @@ class RunAnn : public EditProcessor {
 			osetprop = (const char *)configuration["output_set"];
 			std::string annfilename = (const char *)configuration["ann_file"];
 			ann = fann_create_from_file(annfilename.c_str());
+			//fann_print_connections(ann);
+			printf("annfilename = %s\n",annfilename.c_str());
+			printf("fann.input = %d\n",fann_get_num_input(ann));
+			printf("fann.output = %d\n", fann_get_num_output(ann));
 			if(!ann) throw std::runtime_error("Error loading ANN");
 		}
 		~RunAnn() {

@@ -339,7 +339,7 @@ class UserCapital : public TextProcessor {
 				for(; *metricchars; ++metricchars) cnt += counts[*metricchars];
 				int noCapital = 1;
 				if(cnt>0) noCapital = 0; 
-				ed.setProp<int>(proppfx + metricname, noCapital);
+				ed.setProp<int>("ann_user_count_capitals", noCapital);
 			}
 		}
 };

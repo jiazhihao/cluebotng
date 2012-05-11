@@ -178,6 +178,7 @@ boolean comment_revert
 boolean comment_common
 boolean current_speedydel_count
 boolean previous_speedydel_count
+boolean user_count_capitals
 
 exact main_bayes_score
 linear_scale main_bayes_nwords 0 20

@@ -20,6 +20,7 @@ int main(int argc, char **argv) {
 	
 	ifstream trainfile;
 	trainfile.open(trainfilename.c_str());
+	printf("trainfile = %s\n", trainfilename.c_str());
 	int numdata, inputs, outputs;
 	trainfile >> numdata;
 	trainfile >> inputs;
@@ -37,5 +38,11 @@ int main(int argc, char **argv) {
 	cout << "Saving file.\n";
 	fann_save(ann, annfilename.c_str());
 	fann_destroy(ann);
+	printf("layersizes = %lu\n", layersizes.size());
+	int i;
+	for(i=0;i<layersizes.size();i++) {
+	  printf("layersizes[%d] = %d\n", i, layersizes[i]);
+	}
+	printf("annfilename = %s\n", annfilename.c_str());
 }
 
