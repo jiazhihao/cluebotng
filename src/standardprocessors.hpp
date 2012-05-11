@@ -372,9 +372,7 @@ class FileBasedFeature : public TextProcessor {
       std::string pathName = "../wikivandalism/" + featureName + ".dat";
       if (!doneLoading) {
         doneLoading = true;
-        std::filebuf fb;
-        fb.open(pathName.c_str(), std::ios::in);
-        std::istream fin(&fb);
+        std::ifstream fin(pathName.c_str());
         std::string line;
         while(fin>>line) {
           int indexOfComma = line.find(',');
@@ -383,7 +381,6 @@ class FileBasedFeature : public TextProcessor {
           double valueAsDouble = atof(value.c_str());
           dict[key] = valueAsDouble;
         }
-        fb.close();
       }
       return dict[editid];
     }
