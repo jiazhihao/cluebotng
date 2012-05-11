@@ -10,6 +10,7 @@ for x in f:
     curedit += 1
     if curedit == splitpoint:
       printing = True
-    print x,
+    if printing:
+      print x,
   elif printing:
     print x,
