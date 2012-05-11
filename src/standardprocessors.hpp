@@ -375,8 +375,6 @@ class FileBasedFeature : public TextProcessor {
         std::filebuf fb;
         fb.open(pathName.c_str(), std::ios::in);
         std::istream fin(&fb);
-        int key;
-        double value;
         std::string line;
         while(fin>>line) {
           int indexOfComma = line.find(',');
@@ -385,6 +383,7 @@ class FileBasedFeature : public TextProcessor {
           double valueAsDouble = atof(value.c_str());
           dict[key] = valueAsDouble;
         }
+        fb.close();
       }
       return dict[editid];
     }
@@ -402,13 +401,33 @@ class FileBasedFeature : public TextProcessor {
 };
 
 class UserIsIPAddress : public FileBasedFeature {
+  std::vector<std::string> boolFeatures;
+  std::vector<std::string> intFeatures;
+  std::vector<std::string> doubleFeatures;
+
   public:
 		UserIsIPAddress(libconfig::Setting & cfg) : FileBasedFeature(cfg) {
-		  featureName = "user_is_ip_address";
+		  boolFeatures.push_back("user_is_ip_address");
+		  boolFeatures.push_back("user_is_bot");
+		  boolFeatures.push_back("user_uses_editing_tool");
+		  //boolFeatures.push_back("username_ends_with_numbers");
+		  //boolFeatures.push_back("username_has_capitals");
+		  //boolFeatures.push_back("username_has_numbers");
 		}
 		
 		void processText(Edit & ed, const std::string & editid, const std::string & proppfx) {
-		  ed.setProp<bool>(featureName, getBoolFeature(featureName));
+		  for (int i = 0; i < boolFeatures.size(); ++i) {
+		    std::string featureName = boolFeatures[i];
+		    ed.setProp<bool>(featureName, getBoolFeature(featureName));
+		  }
+		  for (int i = 0; i < intFeatures.size(); ++i) {
+		    std::string featureName = intFeatures[i];
+		    ed.setProp<int>(featureName, getIntFeature(featureName));
+		  }
+		  for (int i = 0; i < doubleFeatures.size(); ++i) {
+		    std::string featureName = doubleFeatures[i];
+		    ed.setProp<double>(featureName, getDoubleFeature(featureName));
+		  }
 		}
 };
 

@@ -1,9 +1,9 @@
 === REPORT ===
 Trial set: 1041 Edits - 78 vandalism, 963 legit (7.4928% vandalism)
 Using vandalism threshold 0.8500:
-False positives: 1 (0.1038% of legit edits)
-Correct positives: 4 (5.1282% of vandal edits)
-With maximum false positive rate 0.0100%, Threshold=0.8727
-Using vandalism threshold 0.8727:
+False positives: 2 (0.2077% of legit edits)
+Correct positives: 13 (16.6667% of vandal edits)
+With maximum false positive rate 0.0100%, Threshold=0.9546
+Using vandalism threshold 0.9546:
 False positives: 0 (0.0000% of legit edits)
-Correct positives: 4 (5.1282% of vandal edits)
+Correct positives: 3 (3.8462% of vandal edits)

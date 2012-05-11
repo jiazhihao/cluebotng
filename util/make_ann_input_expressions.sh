@@ -181,6 +181,8 @@ boolean previous_speedydel_count
 boolean user_count_capitals
 #boolean user_ends_with_number
 boolean user_is_ip_address
+boolean user_is_bot
+boolean user_uses_editing_tool
 
 exact main_bayes_score
 linear_scale main_bayes_nwords 0 20
