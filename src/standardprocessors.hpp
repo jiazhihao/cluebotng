@@ -419,6 +419,17 @@ class UserIsIPAddress : public FileBasedFeature {
 		  //boolFeatures.push_back("username_ends_with_numbers");
 		  //boolFeatures.push_back("username_has_capitals");
 		  //boolFeatures.push_back("username_has_numbers");
+		  boolFeatures.push_back("editor_started_article");
+		  boolFeatures.push_back("user_has_edited_talk_page");
+		  
+		  intFeatures.push_back("edited_article_user_num_edits");
+		  intFeatures.push_back("user_revision_count");
+		  intFeatures.push_back("user_talk_revision_count");
+		  intFeatures.push_back("user_talk_vandal_vocab_count");
+		  
+		  doubleFeatures.push_back("user_article_to_edit_ratio");
+		  doubleFeatures.push_back("user_comment_avg_length");
+		  doubleFeatures.push_back("user_empty_comment_ratio");
 		}
 		
 		void processText(Edit & ed, const std::string & editid, const std::string & proppfx) {
