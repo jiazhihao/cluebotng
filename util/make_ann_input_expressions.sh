@@ -202,6 +202,8 @@ diff_linear_scale user_talk_vandal_vocab_count 0 10
 diff_linear_scale user_article_to_edit_ratio 0 10
 diff_linear_scale user_comment_avg_length 0 10
 diff_linear_scale user_empty_comment_ratio 0 10
+diff_linear_scale user_num_groups 0 10
+diff_linear_scale user_average_article_newness 0 10
 
 exact main_bayes_score
 linear_scale main_bayes_nwords 0 20

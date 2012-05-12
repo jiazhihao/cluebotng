@@ -438,6 +438,7 @@ class UserIsIPAddress : public FileBasedFeature {
 		  doubleFeatures.push_back("user_article_to_edit_ratio");
 		  doubleFeatures.push_back("user_comment_avg_length");
 		  doubleFeatures.push_back("user_empty_comment_ratio");
+		  doubleFeatures.push_back("user_average_article_newness");
 		}
 		
 		void processText(Edit & ed, const std::string & editid, const std::string & proppfx) {
