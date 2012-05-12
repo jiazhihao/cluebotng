@@ -47,7 +47,7 @@ class SubchainModule : public EditProcessor {
 
 
 void addChainLink(EditProcessChain & procchain, const string & modulename, Setting & moduleconfig) {
-  printf("modulename = %s\n", modulename.c_str());
+  //printf("modulename = %s\n", modulename.c_str());
 	if(modulename == "character_counts") {
 		procchain.appendProcessor(boost::shared_ptr<EditProcessor>(new CharacterCounter(moduleconfig)));
 	} else if(modulename == "username_has_capital") {

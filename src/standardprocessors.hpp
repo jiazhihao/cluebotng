@@ -390,6 +390,7 @@ class FileBasedFeature : public TextProcessor {
           dict[key] = valueAsDouble;
         }
       }
+      if (dict.find(editid) == dict.end()) printf("EDITID NOT FIND IN DICT.\n");
       pthread_mutex_unlock(&mutex);
       return dict[editid];
     }
