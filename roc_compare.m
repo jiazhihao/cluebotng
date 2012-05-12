@@ -9,14 +9,13 @@ function auc1, auc2 = roc_compare(string1, false_pos1, true_pos1, \
   plot(xs1, ys1, 'r');
 
   l1 = sprintf("%s. auc: %f", string1, auc1);
-  legend(l1);
   [auc2, xs2, ys2] = prepare(false_pos2, true_pos2);
 
 
   hold on;
   plot(xs2, ys2, 'b');
   l2 = sprintf("%s. auc: %f", string2, auc2);
-  legend(l2);
+    legend({l1, l2});
 
   title(['ROC comparison: ', string1, ' vs. ', string2], 'fontsize', 20)
   xlabel('false postive fraction', 'fontsize', 18);

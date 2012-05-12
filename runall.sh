@@ -5,6 +5,10 @@ cd conf
 ../util/make_ann_input_expressions.sh
 cd ..
 #./util/train_bayes.sh
+cd trialreport
+git checkout thresholdtable.txt
+mv thresholdtable.txt thresholdtable-prev.txt
+cd ..
 make anntrainandtrial
 cd trialreport
 git checkout falsepositives.png

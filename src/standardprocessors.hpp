@@ -15,6 +15,7 @@
 #include <errno.h>
 #include <boost/thread.hpp>
 #include "faststringops.hpp"
+#include <pthread.h>    
 
 #define is_lcase(c) ((c) >= 'a' && (c) <= 'z')
 #define is_ucase(c) ((c) >= 'A' && (c) <= 'Z')
@@ -362,9 +363,16 @@ class FileBasedFeature : public TextProcessor {
   public:
     std::map<std::string, double> dict;
     std::map<std::string, int> doneLoading;
-    FileBasedFeature(libconfig::Setting & cfg) : TextProcessor(cfg) {}
+    pthread_mutex_t mutex;
+
+    FileBasedFeature(libconfig::Setting & cfg) : TextProcessor(cfg) {
+         pthread_mutex_init(&mutex, NULL);
+ 
+      }
+
     
     double getDoubleFeature(const std::string &editid, const std::string &featureName) {
+      pthread_mutex_lock(&mutex);
       std::string pathName = "../wikivandalism/" + featureName + ".dat";
       if (doneLoading.count(featureName) == 0) {
         doneLoading[featureName] = 1;
@@ -382,6 +390,7 @@ class FileBasedFeature : public TextProcessor {
           dict[key] = valueAsDouble;
         }
       }
+      pthread_mutex_unlock(&mutex);
       return dict[editid];
     }
     
