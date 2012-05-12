@@ -8,14 +8,16 @@ function auc1, auc2 = roc_compare(string1, false_pos1, true_pos1, \
   [auc1, xs1, ys1] = prepare(false_pos1, true_pos1);
   plot(xs1, ys1, 'r');
 
-  l1 = sprintf("%s. auc: %f", string1, auc1);
+
   [auc2, xs2, ys2] = prepare(false_pos2, true_pos2);
 
 
   hold on;
   plot(xs2, ys2, 'b');
+
+  l1 = sprintf("%s. auc: %f", string1, auc1);
   l2 = sprintf("%s. auc: %f", string2, auc2);
-    legend({l1, l2});
+  legend({l1, l2});
 
   title(['ROC comparison: ', string1, ' vs. ', string2], 'fontsize', 20)
   xlabel('false postive fraction', 'fontsize', 18);
@@ -29,11 +31,12 @@ function auc, xs,ys = prepare(false_pos, true_pos)
   sortedbyx = sortrows(data,1);
 
   deltas = sortedbyx(2:end,1) - sortedbyx(1:end-1,1);
-  ys = sortedbyx(2:end,2);
+  ysupper = sortedbyx(2:end,2);
+  yslower = sortedbyx(1:end-1,2);
 
-  auc = sum(deltas.*ys);
-
-  auc = trapz(sortedbyx(:,1), sortedbyx(:,2));
+  aucupper = sum(deltas.*ysupper);
+  auclower = sum(deltas.*yslower);
+  auc = (aucupper + auclower)/2;
 
   xs = sortedbyx(:,1);
   ys = sortedbyx(:,2);
