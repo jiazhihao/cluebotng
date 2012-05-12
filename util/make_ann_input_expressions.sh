@@ -186,6 +186,15 @@ boolean user_is_bot
 boolean user_uses_editing_tool
 boolean editor_started_article
 boolean user_has_edited_talk_page
+boolean article_is_biography
+boolean article_is_protected
+boolean is_africa_ip
+boolean is_australia_ip
+boolean is_asia_ip
+boolean is_europe_ip
+boolean is_north_america_ip
+boolean is_south_america_ip
+
 diff_linear_scale edited_article_user_num_edits 0 10
 diff_linear_scale user_revision_count 0 10
 diff_linear_scale user_talk_revision_count 0 10

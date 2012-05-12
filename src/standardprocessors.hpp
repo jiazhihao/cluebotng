@@ -421,6 +421,14 @@ class UserIsIPAddress : public FileBasedFeature {
 		  //boolFeatures.push_back("username_has_numbers");
 		  boolFeatures.push_back("editor_started_article");
 		  boolFeatures.push_back("user_has_edited_talk_page");
+		  boolFeatures.push_back("article_is_biography");
+		  boolFeatures.push_back("article_is_protected");
+		  boolFeatures.push_back("is_africa_ip");
+      boolFeatures.push_back("is_australia_ip");
+      boolFeatures.push_back("is_asia_ip");
+      boolFeatures.push_back("is_europe_ip");
+      boolFeatures.push_back("is_north_america_ip");
+      boolFeatures.push_back("is_south_america_ip");
 		  
 		  intFeatures.push_back("edited_article_user_num_edits");
 		  intFeatures.push_back("user_revision_count");
