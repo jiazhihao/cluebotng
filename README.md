@@ -36,6 +36,8 @@ Now add to util/make_ann_input_expressions.sh:
 
 Now rebuild with make, and retrain with ./runall.sh
 
+Should you need to later disable a feature, just uncomment it in util/make_ann_input_expressions.sh, and rerun ./runall.sh
+
 What follows is the original readme file for Cluebot NG
 ====
 
