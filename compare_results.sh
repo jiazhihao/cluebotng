@@ -9,4 +9,3 @@ tail -n +2 $file1 > $file1.tmp
 tail -n +2 $file2 > $file2.tmp
 
 octave --silent compare_results.m $string1 $file1.tmp $string2 $file2.tmp
-eog $string1$string2.png
