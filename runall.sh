@@ -17,6 +17,9 @@ mv falsepositives.png falsepositives-prev.png
 mv thresholds.png thresholds-prev.png
 ./makegraphs.sh
 cd ..
-mv prevnew.png oldcomparison.png
-./compare_results.sh prev trialreport/thresholdtable-prev.txt new trialreport/thresholdtable.txt
 
+PREV=prev
+NEW=new
+
+mv $PREV$NEW.png oldcomparison.png
+./compare_results.sh $PREV trialreport/thresholdtable-prev.txt $NEW trialreport/thresholdtable.txt

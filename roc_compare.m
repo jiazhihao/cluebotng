@@ -8,10 +8,7 @@ function auc1, auc2 = roc_compare(string1, false_pos1, true_pos1, \
   [auc1, xs1, ys1] = prepare(false_pos1, true_pos1);
   plot(xs1, ys1, 'r');
 
-
   [auc2, xs2, ys2] = prepare(false_pos2, true_pos2);
-
-
   hold on;
   plot(xs2, ys2, 'b');
 
@@ -28,7 +25,8 @@ end
 
 function auc, xs,ys = prepare(false_pos, true_pos)
   data = [false_pos, true_pos];
-  sortedbyx = sortrows(data,1);
+  %hopefully this sorte routing is stable 
+  sortedbyx = sortrows(sortrows(data,2),1);
 
   deltas = sortedbyx(2:end,1) - sortedbyx(1:end-1,1);
   ysupper = sortedbyx(2:end,2);
