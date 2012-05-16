@@ -430,11 +430,16 @@ class UserIsIPAddress : public FileBasedFeature {
       boolFeatures.push_back("is_europe_ip");
       boolFeatures.push_back("is_north_america_ip");
       boolFeatures.push_back("is_south_america_ip");
+      boolFeatures.push_back("user_at_least_2_edits");
+      boolFeatures.push_back("user_at_least_10_edits");
+      boolFeatures.push_back("user_at_least_100_edits");
+      boolFeatures.push_back("user_at_least_200_edits");
 		  
 		  intFeatures.push_back("edited_article_user_num_edits");
 		  intFeatures.push_back("user_revision_count");
 		  intFeatures.push_back("user_talk_revision_count");
 		  intFeatures.push_back("user_talk_vandal_vocab_count");
+		  intFeatures.push_back("user_total_num_edits");
 		  
 		  doubleFeatures.push_back("user_article_to_edit_ratio");
 		  doubleFeatures.push_back("user_comment_avg_length");
