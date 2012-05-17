@@ -430,7 +430,8 @@ class UserIsIPAddress : public FileBasedFeature {
       boolFeatures.push_back("is_europe_ip");
       boolFeatures.push_back("is_north_america_ip");
       boolFeatures.push_back("is_south_america_ip");
-      boolFeatures.push_back("user_at_least_2_edits");
+      boolFeatures.push_back("user_at_least_2_edits");      
+      boolFeatures.push_back("user_at_least_5_edits");
       boolFeatures.push_back("user_at_least_10_edits");
       boolFeatures.push_back("user_at_least_100_edits");
       boolFeatures.push_back("user_at_least_200_edits");
